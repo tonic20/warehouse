@@ -1,0 +1,63 @@
+- title "Суммарное количество по всем складам"
+
+%h2
+
+.onlyprint
+  - if @category_id
+    %p
+      Категория:
+      %strong
+        = Category.find(@category_id).name
+  %p
+    Дата с:
+    %strong
+      = l(@date_from)
+    по:
+    %strong
+      = l(@date_to)
+
+= form_tag({:action => 'equipment_summary'}, {:class => "search noprint"}) do
+  = label_tag :date_from, "Дата с:"
+  = text_field_tag :date_from, l(@date_from), :class => "datepicker"
+
+  = label_tag :date_to, "по:"
+  = text_field_tag :date_to, l(@date_to), :class => "datepicker"
+  %br
+
+  = label_tag :category_id, "Категория"
+  = select_tag :category_id, options_for_select(Category.for_select, @category_id)
+
+  = check_box_tag :expanded, 'true', @expanded
+  = label_tag :expand, "Развернуть"
+
+  = submit_tag "Обновить"
+
+- unless @equipments.blank?
+  .report
+    %table
+      %tr
+        %th Категория
+        %th Оборудование
+        %th Поступило
+        %th Списано
+        %th Итого
+        %th Ед. изм.
+
+      - for equipment in @equipments
+        %tr{:data => {:id => equipment.id}}
+          %td= equipment.category_name
+          %td
+            = link_to "&nbsp;".html_safe, "#",
+              :class => "show_details noprint #{ @expanded ? "" : "expanded" }",
+              :title => "История изменений"
+            = equipment.name
+          %td.right= equipment.qty_income.to_f
+          %td.right= equipment.qty_outcome.to_f
+          %td.right= equipment.qty_income.to_f - equipment.qty_outcome.to_f
+          %td.center= t("units.#{Equipment::UNITS.index(equipment.units)}")
+
+        - if @expanded
+          = render :partial => "history_items",
+            :locals => {:stock_items => equipment.stock_items.by_date(@date_from, @date_to),
+              :equipment_id => equipment.id}
+

@@ -1,0 +1,30 @@
+- title("Оборудование")
+
+.filter
+  = form_tag equipments_path, :method => :get do
+    = hidden_field_tag :page, @page
+    = label_tag :category_id, "Категория"
+    = select_tag :category_id, options_for_select(Category.for_select, @category_id)
+    = submit_tag "Обновить", :name => :search
+
+%table
+  %tr
+    %th= Equipment.human_attribute_name(:name)
+    %th= Equipment.human_attribute_name(:part_number)
+    %th= Equipment.human_attribute_name(:category)
+    %th= Equipment.human_attribute_name(:units)
+    %th{:colspan=>"2"}
+
+  - @equipments.each do |equipment|
+    %tr
+      %td= equipment.name
+      %td= equipment.part_number
+      %td= equipment.category.name if equipment.category
+      %td.center= equipment.units_text
+      %td= link_to 'Изменить', edit_resource_path(equipment)
+      %td= link_to 'Удалить', resource_path(equipment), :confirm => 'Вы уверены?', :method => :delete
+
+= will_paginate @equipments
+
+%p= link_to 'Добавить', new_resource_path
+

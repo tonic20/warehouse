@@ -1,0 +1,53 @@
+- title("Документы по складу #{@stock.try(:name)}")
+
+- if @stock
+  .filter
+    = form_tag stock_items_path, :method => :get do
+      = hidden_field_tag :page, @page
+
+      = label_tag :date_from, "Дата с:"
+      = text_field_tag :date_from, l(@date_from), :class => "datepicker"
+
+      = label_tag :date_to, "по:"
+      = text_field_tag :date_to, l(@date_to), :class => "datepicker"
+      %br
+
+      = label_tag :stock_id, "Склад"
+      = select_tag :stock_id, options_for_select(current_user.stocks_for_select, @stock.id)
+
+      = label_tag :category_id, "Категория"
+      = select_tag :category_id, options_for_select(Category.for_select, @category_id)
+      %br
+
+      = label_tag :equipment_id, "Оборудование"
+      = select_tag :equipment_id, options_for_select(@stock.equipments_for_select, @equipment_id)
+
+      = submit_tag "Обновить", :name => :search
+
+  %table
+    %tr
+      %th= StockItem.human_attribute_name(:stock_date)
+      %th= StockItem.human_attribute_name(:doc_type)
+      %th= StockItem.human_attribute_name(:category_id)
+      %th= StockItem.human_attribute_name(:equipment_id)
+      %th= StockItem.human_attribute_name(:quantity)
+      %th= StockItem.human_attribute_name(:updated_at)
+      %th{:colspan=>"2"}
+
+    - for stock_item in @stock_items
+      %tr
+        %td= l(stock_item.stock_date)
+        %td= stock_item.doc_type_text
+        %td= stock_item.equipment.category.name if stock_item.equipment.category
+        %td= stock_item.equipment.name if stock_item.equipment
+        %td.right
+          = stock_item.sign
+          = stock_item.quantity_with_units
+        %td
+          %i
+            = "#{stock_item.user.username if stock_item.user}, #{Russian::strftime(stock_item.updated_at, "%d.%m.%Y %H:%M")}"
+        %td= link_to 'Изменить', edit_resource_path(stock_item)
+        %td= link_to 'Удалить', resource_path(stock_item), :confirm => 'Вы уверены?', :method => :delete
+
+  = will_paginate @stock_items
+

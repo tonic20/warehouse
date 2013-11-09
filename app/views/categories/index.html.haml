@@ -1,0 +1,17 @@
+- title("Категории")
+
+%table
+  %tr
+    %th= Category.human_attribute_name(:name)
+    %th{:colspan=>"2"}
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td= link_to 'Изменить', edit_resource_path(category)
+      %td= link_to 'Удалить', resource_path(category), :confirm => 'Вы уверены?', :method => :delete
+
+= will_paginate @categories
+
+%p= link_to 'Добавить', new_resource_path
+

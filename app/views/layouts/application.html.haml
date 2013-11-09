@@ -1,0 +1,43 @@
+!!! 5
+%html
+  %head
+    %meta{:charset => "UTF-8"}
+    %title
+      - title = yield(:title)
+      = title.empty? ? "Склад" : title
+
+    = stylesheet_link_tag "reset", "application", "formtastic", "formtastic_changes", :media => "screen"
+    = stylesheet_link_tag "smoothness/jquery-ui-1.8.2.custom"
+    = stylesheet_link_tag "reset", "print", :media => "print"
+
+    = javascript_include_tag "http://www.google.com/jsapi"
+    :javascript
+      google.load("jquery", "1.4");
+      google.load("jqueryui", "1.8");
+    = javascript_include_tag "ui.datepicker-ru"
+    = javascript_include_tag "rails", "application"
+
+    = csrf_meta_tag
+    = yield(:head)
+  %body
+    #container
+
+      - if logged_in?
+        #main.noprint
+          = render_navigation(:level => 1)
+
+        #sub_menu.noprint
+          = render_navigation(:level => 2)
+
+        #user_panel.noprint
+          != "Добро пожаловать, <strong>#{current_user.username}</strong>!"
+          = link_to "Выход", logout_path
+
+      .clear
+
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      = content_tag :h1, yield(:title) if show_title?
+
+      = yield
+

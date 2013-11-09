@@ -1,0 +1,15 @@
+- title "Вход"
+
+= form_for @user_session do |f|
+  = f.error_messages
+  %p
+    = f.label :username, "Имя пользователя"
+    %br
+    = f.text_field :username
+  %p
+    = f.label :password, "Пароль"
+    %br
+    = f.password_field :password
+  %p
+    = f.submit "Вход"
+

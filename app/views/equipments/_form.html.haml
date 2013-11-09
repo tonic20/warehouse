@@ -1,0 +1,12 @@
+= semantic_form_for @equipment, :url => @equipment.new_record? ? equipments_path : equipment_path(@equipment) do |f|
+  = f.inputs do
+    = f.input :name, :required => true
+    = f.input :part_number
+    = f.input :category, :as => :select, :collection => Category.sorted
+    = f.input :units, :as => :select, :collection => Equipment.units_for_select, :include_blank => false
+  = f.buttons do
+    = f.commit_button "Сохранить"
+    %li{:class=>"link"}
+      или
+      = link_to 'Вернутся', collection_path
+

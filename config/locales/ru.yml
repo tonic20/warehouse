@@ -1,0 +1,80 @@
+ru:
+  activerecord:
+    models:
+      category: "Категория"
+      equipment: "Оборудование"
+      stock: "Склады"
+      stock_items: "Поступления на склад"
+      user: "Пользователи"
+    attributes:
+      category:
+        id: "#"
+        name: "Название"
+      equipment:
+        id: "#"
+        name: "Название"
+        part_number: "Номер части"
+        category: "Категория"
+        units: "Ед. измерения"
+      stock:
+        id: "#"
+        name: "Название"
+      stock_item:
+        id: "#"
+        stock_date: "Дата"
+        user_id: "Пользователь"
+        stock_id: "Склад"
+        equipment_id: "Оборудование"
+        category_id: "Категория"
+        quantity: "Количество"
+        doc_type: "Тип документа"
+        stock_target_id: "Склад получатель"
+        updated_at: "Обновлено"
+      user:
+        id: "#"
+        username: "Имя пользователя"
+        email: "Эл. почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        last_login_at: "Последний вход"
+        role: "Роль"
+        stocks: "Склады"
+  errors:
+    template:
+      header:
+        one: "%{model}: сохранение не удалось из-за %{count}% ошибки"
+        few: "%{model}: сохранение не удалось из-за %{count}% ошибок"
+        many: "%{model}: сохранение не удалось из-за %{count}% ошибок"
+        other: "%{model}%: сохранение не удалось из-за %{count}% ошибки"
+      body: "Проблемы возникли со следующими полями:"
+  authlogic:
+    error_messages:
+      login_blank: "не может быть пустым"
+      login_not_found: "не действительный"
+      login_invalid: "должны быть использованы только буквы, цифры, пробелы, и символы .-_@"
+      consecutive_failed_logins_limit_exceeded: "Consecutive failed logins limit exceeded, account is disabled."
+      email_invalid: "должно быть похоже на адрес эл.почты"
+      password_blank: "не может быть пустым"
+      password_invalid: "не действительный"
+      not_active: "Ваш логин не активный"
+      not_confirmed: "Ваш логин не подтверждён"
+      not_approved: "Ваш логин не подтверждён"
+      no_authentication_details: "Вы не указали имя пользователя и пароль для входа."
+  flash:
+    actions:
+      create:
+        notice: 'Запись успешно создана.'
+      update:
+        notice: 'Запись успешно сохранена.'
+      destroy:
+        notice: 'Запись успешно удалена.'
+        alert: 'Запись не может быть удалена.'
+  units:
+    pieces: "шт"
+    kg: "кг"
+    meter: "м"
+  doc_types:
+    income: "поступление"
+    outcome: "списание"
+    movement: "перемещение"
+

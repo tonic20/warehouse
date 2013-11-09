@@ -1,0 +1,17 @@
+- title("Склады")
+
+%table
+  %tr
+    %th= Stock.human_attribute_name(:name)
+    %th{:colspan=>"2"}
+
+  - @stocks.each do |stock|
+    %tr
+      %td= stock.name
+      %td= link_to 'Изменить', edit_resource_path(stock)
+      %td= link_to 'Удалить', resource_path(stock), :confirm => 'Вы уверены?', :method => :delete
+
+= will_paginate @stocks
+
+%p= link_to 'Добавить', new_resource_path
+

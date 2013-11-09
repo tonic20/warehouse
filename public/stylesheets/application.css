@@ -1,0 +1,216 @@
+body {
+  background-color: #4B7399;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+  min-height: 500px;
+  height: 100%;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 18px 0px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 18px 0px;
+}
+
+table {
+  border: solid 1px #999;
+  margin: 18px 0px;
+}
+
+table th {
+  background-color: #eee;
+  font-weight: bold;
+  padding: 2px 10px;
+  text-align: center;
+  border: solid 1px #999;
+}
+
+table td {
+  border: solid 1px #999;
+  padding: 2px 10px;
+}
+
+table td i {
+  font-size: 0.8em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+#container {
+  width: 80%;
+  min-width: 870px;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 5px 40px 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.error_messages ul {
+  margin: 0;
+}
+
+/* Main navigation */
+#main ul, #sub_menu ul {
+  float: left;
+  padding: 0px 0px;
+  margin: 3px 0px;
+}
+
+#main ul li {
+  list-style: none;
+  float: left;
+  padding: 10px 20px 10px 20px;
+  margin-right: 10px;
+  font-size: 1.4em;
+}
+
+#sub_menu ul li {
+  list-style: none;
+  float: left;
+  padding: 5px 10px 5px 10px;
+  margin-right: 5px;
+}
+
+#main ul li.selected, #sub_menu ul li.selected {
+  background-color: #eee;
+}
+
+#main ul li.selected a, #sub_menu ul li.selected a {
+  color: #000;
+  text-decoration: none;
+}
+
+#sub_menu {
+  clear: both;
+}
+
+#user_panel {
+  float: right;
+  top: -30px;
+  position: relative;
+}
+
+.pagination {padding-top:3px; padding-bottom: 5px;}
+.pagination a {padding:2px 5px 2px 5px; margin:2px; border:1px solid #DCDCDC; text-decoration:none; color:#278CCD;}
+.pagination a:hover, .pagination a:active {border:1px solid #278CCD; color:#fff; background-color:#278CCD;}
+.pagination span.current {padding:2px 5px 2px 5px; margin:2px; border:1px solid #278CCD; font-weight:normal; background-color:#278CCD; color:#FFF;}
+.pagination span.disabled {padding:2px 5px 2px 5px; margin:2px; border:1px solid #eee; color:#ddd;}
+.pagination_info {font-size: 0.8em;}
+.pagination_info b {font-weight: normal;}
+
+.help {
+  margin-bottom: 50px;
+  padding-left: 40px;
+}
+
+.help ol {
+  padding-top: 10px;
+  padding-left: 40px;
+  list-style-type: decimal;
+}
+
+.help ol > li {
+  padding-top: 5px;
+}
+
+.onlyprint {
+  display: none;
+}
+
+a.show_details {
+  background: transparent url('../images/minus.gif') 3px 3px no-repeat;
+  text-decoration: none;
+  padding: 0px 6px;
+}
+
+a.show_details.expanded {
+  background-image: url('../images/plus.gif');
+}
+
+tr.history {
+  font-size: 0.9em;
+}
+
+.datepicker {
+  width: 90px;
+}
+
+#ui-datepicker-div {
+  display: none;
+}
+

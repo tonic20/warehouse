@@ -1,0 +1,11 @@
+- unless stock_items.blank?
+  = render :partial => "history_item", :collection => stock_items, :locals => {:equipment_id => equipment_id}
+- else
+  %tr{:class => "history equipment#{equipment_id}"}
+    %td
+    %td.right нет изменений по складу за период
+    %td.right
+    %td.right
+    %td.right
+    %td.center
+

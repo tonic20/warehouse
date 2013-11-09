@@ -1,0 +1,13 @@
+= semantic_form_for @stock_item  do |f|
+  = f.inputs do
+    = f.input :stock_id, :as => :select, :collection => current_user.stocks.sorted, :required => true, :include_blank => false
+    = f.input :doc_type, :as => :radio, :collection => StockItem.doc_types_for_select, :required => true
+    = f.input :stock_date, :required => true
+    = f.input :equipment_id, :as => :select, :collection => Equipment.sorted, :required => true
+    = f.input :quantity, :required => true
+  = f.buttons do
+    = f.commit_button "Сохранить"
+    %li{:class=>"link"}
+      или
+      = link_to 'Вернутся', collection_path
+

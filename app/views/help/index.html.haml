@@ -1,0 +1,28 @@
+- title("Помощь")
+
+.help
+  %h2
+    Сохранение отчётов в PDF
+
+  %p
+    Чтобы сохранять отчёты в PDF нужно:
+
+  %ol
+    %li
+      Установить бесплатную программу&nbsp;
+      %a{:href=>"http://www.cutepdf.com/Products/CutePDF/writer.asp"}><
+        CutePDF Writer
+      \.
+      Для этого нужно скачать и выполнить два файла:
+      %ul
+        %li
+          = link_to "http://www.cutepdf.com/download/CuteWriter.exe", "http://www.cutepdf.com/download/CuteWriter.exe"
+        %li
+          = link_to "http://www.cutepdf.com/download/converter.exe", "http://www.cutepdf.com/download/converter.exe"
+    %li
+      После этого в системе появится виртуальный принтер CutePDF.
+    %li
+      Заходим в нужный отчёт, нажимаем в браузере "Файл" - "Печать" и выбираем принтер CutePDF. После этого программа спросит куда сохранить PDF файл. В этом файле будет ваш отчёт который вы печатали.
+    %li
+      Кстати говоря, ровно таким же образом можно сделать PDF файл из любого другого приложения.
+

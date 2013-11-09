@@ -1,0 +1,24 @@
+- title("Пользователи")
+
+%table
+  %tr
+    %th= User.human_attribute_name(:username)
+    %th= User.human_attribute_name(:email)
+    %th= User.human_attribute_name(:role)
+    %th= User.human_attribute_name(:stocks)
+    %th{:colspan=>"3"}
+
+  - @users.each do |user|
+    %tr
+      %td= user.username
+      %td= user.email
+      %td= user.role
+      %td= user.stock_names
+      %td= link_to 'Изменить', edit_resource_path(user)
+      %td= link_to 'Изменить пароль', change_password_user_path(user)
+      %td= link_to 'Удалить', resource_path(user), :confirm => 'Вы уверены?', :method => :delete
+
+= will_paginate @users
+
+%p= link_to 'Добавить', new_resource_path
+
